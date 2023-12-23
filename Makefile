@@ -4,7 +4,7 @@ ifneq (,$(wildcard ./.env))
 		export
 endif
 
-app=$(shell pwd)/phase_1/investor_bulletin
+app=$(shell pwd)/phase_2/investor_bulletin
 
 start: down up run
 
@@ -19,16 +19,16 @@ seed:
 	./dev_setup/seed-data.sh
 
 generate-migrations:
-	(cd phase_1/investor_bulletin \
+	(cd phase_2/investor_bulletin \
 		&& alembic revision --autogenerate -m "$(msg)" \
 		&& alembic upgrade head)
 
 run-migrations:
-	(cd phase_1/investor_bulletin \
+	(cd phase_2/investor_bulletin \
 		&& alembic upgrade head)
 
 undo-migrations:
-	(cd phase_1/investor_bulletin \
+	(cd phase_2/investor_bulletin \
 	  && alembic downgrade base)
 
 run:

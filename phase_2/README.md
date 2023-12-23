@@ -21,26 +21,19 @@ to be able to publish `THRESHOLD_ALERT` event through a message queue and consum
 
 ## TASKS Breakdown
 
-- [ ] **Copy all your work in phase one**
---
-- [ ] **Set up your environment**
- Whether on your machine or using docker, make sure you have a running rabbitmq broker
---
-- [ ] **Get to know Rabbitmq and Configure the queues**
---
-- [ ] **Create a publisher connection using amqpstorm inside the core/messaging.py file**
---
-- [ ] **Publish a `THRESHOLD_ALERT` event by running the core/messaging.py file**
---
-- [ ] **Create a consumer connection using pika inside the event_subscriber/main.py**
---
-- [ ] **Consumed the published event and print the message by running the the event_subscriber/main.py**
---
+- [x] ## **Copy all your work in phase one**
+- [x] **Set up your environment**
+      Whether on your machine or using docker, make sure you have a running rabbitmq broker
+      --
+- [ ] ## **Get to know Rabbitmq and Configure the queues**
+- [ ] ## **Create a publisher connection using amqpstorm inside the core/messaging.py file**
+- [ ] ## **Publish a `THRESHOLD_ALERT` event by running the core/messaging.py file**
+- [ ] ## **Create a consumer connection using pika inside the event_subscriber/main.py**
+- [ ] ## **Consumed the published event and print the message by running the the event_subscriber/main.py**
 - [ ] **Create an event record by using the alert_service.py**
 
 ## What's next
 
-- **If you complete the tasks**, just send an email with the a link of your work in your github, tell us more about your comfort level out of 5 and what was the most challenging part and the most rewarding part.
---
+- ## **If you complete the tasks**, just send an email with the a link of your work in your github, tell us more about your comfort level out of 5 and what was the most challenging part and the most rewarding part.
 
-- **If you stuck, or it took so long*- it ok, we understand just send an email with the a link of your work in your github, tell us more about your comfort level out of 5 and how much did you actually completed from the task out of 7, where are you stuck or what took the most of your time
+- \*_If you stuck, or it took so long_- it ok, we understand just send an email with the a link of your work in your github, tell us more about your comfort level out of 5 and how much did you actually completed from the task out of 7, where are you stuck or what took the most of your time
