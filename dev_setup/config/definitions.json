@@ -2,8 +2,37 @@
     "users": [],
     "vhosts": [],
     "permissions": [],
-    "exchanges": [],
-    "queues": [],
-    "bindings": [],
+    "queues": [
+        {
+            "name": "alert-queue",
+            "vhost": "/",
+            "durable": true,
+            "auto_delete": false,
+            "arguments": {
+                "x-queue-type": "classic"
+            }
+        }
+    ],
+    "exchanges": [
+        {
+            "name": "investor_bulletin",
+            "vhost": "/",
+            "type": "topic",
+            "durable": true,
+            "auto_delete": false,
+            "internal": false,
+            "arguments": {}
+        }
+    ],
+    "bindings": [
+        {
+            "source": "investor_bulletin",
+            "vhost": "/",
+            "destination": "alert-queue",
+            "destination_type": "queue",
+            "routing_key": "investor_bulletin.alert.#",
+            "arguments": {}
+        }
+    ],
     "policies": []
 }

@@ -34,4 +34,10 @@ undo-migrations:
 run:
 	export PYTHONPATH=$(app) && python3 $(app)/api/main.py
 
-# pip3 install sqlalchemy-cockroachdb sqlalchemy fastapi uvicorn psycopg2-binary alembic databases requests
+run-publish:
+	export PYTHONPATH=$(app) && python3 $(app)/core/messaging.py
+
+run-consume:
+	export PYTHONPATH=$(app) && python3 $(app)/event_subscriber/main.py
+
+# pip3 install sqlalchemy-cockroachdb sqlalchemy fastapi uvicorn psycopg2-binary alembic databases requests pika amqpstorm
