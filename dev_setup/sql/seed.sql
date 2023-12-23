@@ -1,0 +1,10 @@
+INSERT INTO investor_bulletin.Alert(name, threshold_price, symbol) values ('Alert 1', 100.1, 'AAPL');
+INSERT INTO investor_bulletin.Alert(name, threshold_price, symbol) values ('Alert 2', 100.2, 'AAPL');
+INSERT INTO investor_bulletin.Alert(name, threshold_price, symbol) values ('Alert 3', 100.3, 'AAPL');
+INSERT INTO investor_bulletin.Alert(name, threshold_price, symbol) values ('Alert 4', 100.4, 'AAPL');
+INSERT INTO investor_bulletin.Alert(name, threshold_price, symbol) values ('Alert 5', 100.5, 'AAPL');
+INSERT INTO investor_bulletin.Alert(name, threshold_price, symbol) values ('Alert 6', 100.6, 'AAPL');
+INSERT INTO investor_bulletin.Alert(name, threshold_price, symbol) values ('Alert 7', 100.7, 'AAPL');
+INSERT INTO investor_bulletin.Alert(name, threshold_price, symbol) values ('Alert 8', 100.8, 'AAPL');
+INSERT INTO investor_bulletin.Alert(name, threshold_price, symbol) values ('Alert 9', 100.9, 'AAPL');
+INSERT INTO investor_bulletin.Alert(name, threshold_price, symbol) values ('Alert 10', 101.0, 'AAPL');

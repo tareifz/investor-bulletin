@@ -1,0 +1,46 @@
+@hostname = localhost
+@port = 8000
+@host = {{hostname}}:{{port}}
+
+###
+# Get market data:
+GET http://{{host}}/market-prices
+
+###
+
+# Get all alerts:
+GET http://{{host}}/alerts/
+
+###
+
+# Get all alert rules:
+GET http://{{host}}/alert-rules/
+
+###
+
+# Create alert rule:
+POST http://{{host}}/alert-rules/
+
+{
+  "name": "test rule",
+  "threshold_price": 100.3,
+  "symbol": "AAPL"
+}
+
+###
+ 
+@id = 928186488682577921
+
+# Delete alert rule:
+DELETE http://{{host}}/alert-rules/{{id}}
+
+###
+
+# Patch alert rule:
+PATCH http://{{host}}/alert-rules/{{id}}
+
+{
+  "name": "Patch Test",
+  "threshold_price": 101,
+  "symbol": "MSFT"
+}

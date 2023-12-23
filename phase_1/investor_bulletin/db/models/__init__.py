@@ -1,5 +1,5 @@
 """ Model base """
 
-# from .model_base import Base
+from .model_base import Base, get_db
 
-# from .models import *
+from .models import *

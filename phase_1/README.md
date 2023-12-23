@@ -52,29 +52,29 @@ Build a `FASTAPI` server that retrieve the latest stock market prices from and e
 
 > 📢📢📢 if you're having issues with imports for example `ModuleNotFoundError: No module named 'api' , make sure to add investor_bulletin path in PYTHONPATH, e.g. `export PYTHONPATH="$(pwd)/investor_bulletin" && python investor_bulletin/api/main.py - please check this article https://www.devdungeon.com/content/python-import-syspath-and-pythonpath-tutorial`
 
-- [ ] **Set up your environment**
+- [x] **Set up your environment**
  Whether on your machine or using docker, make sure you have an updated python version min `3.11` and a running a cockroachdb DB server
 --
-- [ ] **Create your web server**
+- [x] **Create your web server**
 --
-- [ ] **Create an account and subscribe to Twelvedata API**
+- [x] **Create an account and subscribe to Twelvedata API**
 Twelvedata API is one of the multiple stock related APIs from [Rapid API](https://rapidapi.com/twelvedata/api/twelve-data1) - `💡 You can choose dif-ferent source API to retrieve the market data`
 --
-- [ ] **Create your first endpoint to retrieve market data**
+- [x] **Create your first endpoint to retrieve market data**
 Required symbols/tickers `AAPL,MSFT,GOOG,AMZN,META`
 --
-- [ ] **Use Pydantic to validate user inputs and server responses**
+- [x] **Use Pydantic to validate user inputs and server responses**
 --
-- [ ] **Setup your ORM models (RuleAlerts, Alerts) and connect them with the DB server**
+- [x] **Setup your ORM models (RuleAlerts, Alerts) and connect them with the DB server**
 alerts should have the following properties `name, threshold price, symbol`
 --
-- [ ] **Create a CRUD API for users to manage the alert rules**
+- [x] **Create a CRUD API for users to manage the alert rules**
 --
-- [ ] **Seed the alerts table with data**
+- [x] **Seed the alerts table with data**
 --
-- [ ] **Create an API to fetch alerts**
+- [x] **Create an API to fetch alerts**
 --
-- [ ] **Apply separation of concern by segregating your logic following the `investor_bulletin folder` structure there is already commented code to guid you through**
+- [x] **Apply separation of concern by segregating your logic following the `investor_bulletin folder` structure there is already commented code to guid you through**
 
 ## What's next
 
