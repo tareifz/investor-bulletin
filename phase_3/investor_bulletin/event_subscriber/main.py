@@ -1,17 +1,17 @@
-from pika import BlockingConnection
+from pika import BlockingConnection, ConnectionParameters
 from db.models import get_db
 from resources.alert.alert_schema import AlertCreate
 import resources.alert.alert_service as alert_service
+from core.settings import RABBITMQ_HOST
 
 # Create a connection object to start consuming events
 
 
 def init_subscriber():
-    return BlockingConnection()
+    return BlockingConnection(ConnectionParameters(host=RABBITMQ_HOST))
 
 
 def on_event(ch, method, properties, body):
-    print(body)
     # I think I have committed a crime here 🫣
     alert_service.create_alert(AlertCreate.model_validate_json(body), next(get_db()))
 

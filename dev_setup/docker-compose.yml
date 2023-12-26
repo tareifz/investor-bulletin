@@ -9,6 +9,7 @@ services:
   database:
     container_name: database-node
     image: cockroachdb/cockroach:v22.2.0
+    hostname: db
     command: start-single-node --insecure --http-addr 0.0.0.0
     volumes:
       - ./sql/init:/docker-entrypoint-initdb.d
@@ -40,3 +41,103 @@ services:
       sh -c "rabbitmq-server"
     networks:
       - internal_nw
+
+  api:
+    image: python:3.9.18-slim
+    container_name: investor-bulletin-api
+    depends_on:
+      - database
+      - broker
+    ports:
+      - "8000:8000"
+    volumes:
+      - "../phase_3/investor_bulletin:/app/server"
+      - "../requirements.txt:/app/requirements.txt"
+    env_file:
+      - .env
+    environment:
+      - PYTHONPATH=/app/server
+    networks:
+      - internal_nw
+    command:
+      - /bin/sh
+      - -c
+      - |
+        pip3 install -r app/requirements.txt
+        cd ./app/server
+        alembic upgrade head
+        python3 ./api/main.py
+
+  worker:
+    image: python:3.9.18-slim
+    container_name: investor-bulletin-worker
+    depends_on:
+      - database
+      - broker
+    volumes:
+      - "../phase_3/investor_bulletin:/app"
+      - "../requirements.txt:/app/requirements.txt"
+    env_file:
+      - .env
+    environment:
+      - PYTHONPATH=/app
+    networks:
+      - internal_nw
+    command:
+      - /bin/sh
+      - -c
+      - |
+        pip3 install -r app/requirements.txt
+        cd ./app
+        alembic upgrade head
+        cd ./worker
+        celery -A app worker --concurrency=1 --loglevel=INFO
+
+  subscriber:
+    image: python:3.9.18-slim
+    container_name: investor-bulletin-subscriber
+    depends_on:
+      - database
+      - broker
+    volumes:
+      - "../phase_3/investor_bulletin:/app"
+      - "../requirements.txt:/app/requirements.txt"
+    env_file:
+      - .env
+    environment:
+      - PYTHONPATH=/app
+    networks:
+      - internal_nw
+    command:
+      - /bin/sh
+      - -c
+      - |
+        pip3 install -r app/requirements.txt
+        cd ./app
+        alembic upgrade head
+        python3 ./event_subscriber/main.py
+
+  beat:
+    image: python:3.9.18-slim
+    container_name: investor-bulletin-beat
+    depends_on:
+      - database
+      - broker
+    volumes:
+      - "../phase_3/investor_bulletin:/app"
+      - "../requirements.txt:/app/requirements.txt"
+    env_file:
+      - .env
+    environment:
+      - PYTHONPATH=/app
+    networks:
+      - internal_nw
+    command:
+      - /bin/sh
+      - -c
+      - |
+        pip3 install -r app/requirements.txt
+        cd ./app
+        alembic upgrade head
+        cd ./worker
+        celery -A app beat --loglevel=INFO

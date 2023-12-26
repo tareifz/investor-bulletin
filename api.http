@@ -22,9 +22,9 @@ GET http://{{host}}/alert-rules/
 POST http://{{host}}/alert-rules/
 
 {
-  "name": "Microsoft rule",
-  "threshold_price": 50,
-  "symbol": "MSFT"
+  "name": "Google rule",
+  "threshold_price": 100.44,
+  "symbol": "GOOG"
 }
 
 ###

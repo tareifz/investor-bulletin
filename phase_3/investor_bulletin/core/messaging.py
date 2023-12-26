@@ -1,10 +1,8 @@
 import json
 from amqpstorm import Connection, Message
 import os
+from core.settings import RABBITMQ_HOST, RABBITMQ_USER, RABBITMQ_PASSWORD
 
-HOST = os.environ.get("RABBITMQ_HOST")
-USER = os.environ.get("RABBITMQ_USER")
-PASSWORD = os.environ.get("RABBITMQ_PASSWORD")
 # Create a connection object to publish events
 
 # Message Properties.
@@ -12,7 +10,7 @@ properties = {"content_type": "application/json"}
 
 
 def publish_msg(msg, exchange, routing_key):
-    broker = Connection(HOST, USER, PASSWORD)
+    broker = Connection(RABBITMQ_HOST, RABBITMQ_USER, RABBITMQ_PASSWORD)
     channel = broker.channel()
     Message.create(
         channel=channel,

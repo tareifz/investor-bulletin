@@ -8,14 +8,13 @@ from resources.alert_rule.alert_rule_service import (
 )
 from resources.market.market_schema import TickerDict
 from resources.market.market_service import get_market_data
+from core.settings import RABBITMQ_HOST
 
 # Create a celery app object to start your workers
 
-HOST = os.environ.get("RABBITMQ_HOST")
-
 
 def create_celery_app():
-    return Celery("app", broker=f"amqp://{HOST}")
+    return Celery("app", broker=f"amqp://{RABBITMQ_HOST}")
 
 
 app = create_celery_app()
