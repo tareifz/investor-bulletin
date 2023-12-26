@@ -11,7 +11,8 @@ services:
     image: cockroachdb/cockroach:v22.2.0
     command: start-single-node --insecure --http-addr 0.0.0.0
     volumes:
-      - ./sql:/docker-entrypoint-initdb.d
+      - ./sql/init:/docker-entrypoint-initdb.d
+      - ./sql/seed:/sql-seed
     ports:
       - "26257:26257"
       - "8080:8080"

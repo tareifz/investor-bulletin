@@ -22,14 +22,14 @@ GET http://{{host}}/alert-rules/
 POST http://{{host}}/alert-rules/
 
 {
-  "name": "test rule",
-  "threshold_price": 100.3,
-  "symbol": "AAPL"
+  "name": "Microsoft rule",
+  "threshold_price": 50,
+  "symbol": "MSFT"
 }
 
 ###
- 
-@id = 928186488682577921
+
+@id = 928823036613492737
 
 # Delete alert rule:
 DELETE http://{{host}}/alert-rules/{{id}}
@@ -40,7 +40,7 @@ DELETE http://{{host}}/alert-rules/{{id}}
 PATCH http://{{host}}/alert-rules/{{id}}
 
 {
-  "name": "Patch Test",
+  "name": "Apple rule",
   "threshold_price": 101,
-  "symbol": "MSFT"
+  "symbol": "AAPL"
 }
